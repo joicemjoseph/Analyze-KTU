@@ -14,3 +14,4 @@ ultimately to replace yellow card.
 - Harsha Govindan
 - Joice
 
+ To learn more about this project, read the [wiki](https://gitlab.com/GECWProject/Analyze-KTU/wikis/home). 
