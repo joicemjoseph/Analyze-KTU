@@ -1,2 +1,3 @@
-Django==1.9.4
+Django==1.11.5 # Movig to a stable version of django
 djangorestframework==3.3.2
+south==1.0.2
