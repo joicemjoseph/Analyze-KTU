@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import uuid
 
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 from registration.models import RegistrationProfile
 from imagekit.models import ProcessedImageField
@@ -26,13 +26,13 @@ class AccountManager(BaseUserManager):
     def create_superuser(self, email, password, **kwargs):
         account = self.create_user(email, password, **kwargs)
 
-        account.is_admin = True
+        account.is_superuser= True
         account.save()
 
         return account
 
 
-class Account(AbstractBaseUser):
+class Account(AbstractBaseUser, PermissionsMixin):
     """Custom User Model
     Provides an enhanced base user with the ability to add any fields we want
     to it in order to make it work for the application.
@@ -48,7 +48,9 @@ class Account(AbstractBaseUser):
         options={'quality': 80}
     )
 
-    is_admin = models.BooleanField(default=False)
+    is_staff =  models.BooleanField(default=False)
+
+    is_superuser = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

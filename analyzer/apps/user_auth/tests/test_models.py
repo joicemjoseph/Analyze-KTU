@@ -57,5 +57,5 @@ class DescribeAccountManager:
     @pytest.mark.django_db
     def it_can_create_super_user(self):
         user = Account.objects.create_superuser('test@test.com', 'password')
-        assert user.is_admin
+        assert user.is_superuser
         Account.objects.get(pk=user.pk).delete()
