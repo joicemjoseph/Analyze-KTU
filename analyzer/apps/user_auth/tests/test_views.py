@@ -170,7 +170,6 @@ class DescribeAvatar:
             response = client.get('/profile/picture/')
             assert response.status_code == 200
             assert response.context['user'] == active_user
-'''
     def it_allows_editing(self, rf, active_user):
         with active_user.login():
             assert not active_user.avatar
@@ -181,5 +180,4 @@ class DescribeAvatar:
             edit_avatar(request)
             assert active_user.avatar
             os.remove(img.path)
-         os.remove(active_user.avatar.path)
-'''
+            os.remove(active_user.avatar.path)
