@@ -19,6 +19,7 @@ def fake_image(img_path=None):
 
     if not os.path.exists(img_path):
         image = Image.new("RGBA", (50, 50), "blue")
+        image = image.convert("RGB")
         image.save(img_path)
 
     with open(img_path, 'rb') as img:

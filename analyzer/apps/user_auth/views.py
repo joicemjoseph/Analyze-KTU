@@ -9,6 +9,8 @@ from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 
+from django.template.loader import render_to_string
+
 from registration.models import RegistrationProfile
 from django_toolset.decorators import authenticated_redirect
 
@@ -43,7 +45,6 @@ def edit_profile(request):
         'user': user,
         'form': form
     }
-
     return render(request, 'edit_profile.html', context)
 
 

@@ -61,3 +61,6 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 node_modules/
+analyzer/static/CACHE/*
+analyzer/tests/*
+analyzer/media/
