@@ -10,7 +10,9 @@ init:
 	pip install -r requirements/development.txt
 	cp analyzer/settings/local.example.py analyzer/settings/local.py
 	npm install -g gulp
+	npm install -g bower
 	npm install
+	bower install
 	chmod +x manage.py
 	python manage.py makemigrations
 	python manage.py migrate

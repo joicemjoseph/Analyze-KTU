@@ -7,6 +7,8 @@
 // Define Global Variables for our main object
 var dest = './analyzer/static/';
 var src = './analyzer/dev/';
+var bower = './bower_components/';
+var temp = './build/';
 
 module.exports = {
   // Define module variables for easy access to source and destination dirs
@@ -41,17 +43,48 @@ module.exports = {
       src + 'scss/screen.scss',
       src + 'scss/**/*.scss'
     ],
-    dest: dest + 'css',
+    dest: temp + 'css',
     settings: {}
   },
-
+  fonts: {
+    src: [
+      bower + 'miminum/asset/fonts/*'
+    ],
+    dest: dest + 'fonts'
+  },
+  img: {
+    src: [
+      bower + 'miminum/asset/img/*'
+    ],
+    dest: dest + 'img'
+  },
+  css: {
+    src: [
+      bower + 'bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css',
+      bower + 'miminum/asset/css/plugins/icheck/skins/**/_all.css',
+      bower + 'miminum/asset/css/plugins/icheck/skins/all.css',
+      bower + 'miminum/asset/css/plugins/ionrangeslider/*.css',
+      bower + 'miminum/asset/css/plugins/*.css',
+      bower + 'miminum/asset/css/*.css',
+      temp + 'css/*.css'
+    ],
+    dest: dest + 'css'
+  },
   // Compile our JS files
   js: {
     src: [
       src + 'js/app.js',
-      src + 'js/**/*.js'
+      src + 'js/**/*.js',
+      bower + 'bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+      bower + 'chained/jquery.chained.min.js',
+      bower + 'chained/jquery.chained.remote.min.js',
+      bower + 'jquery/dist/jquery.min.js',
+      bower + 'parselyjs/dist/parsely.min.js',
+      bower + 'parselyjs/dist/i18n/en.js',
+      bower + 'miminum/asset/js/plugins/**/*.js',
+      bower + 'miminum/asset/js/*.js'
     ],
-    dest: src + 'js',
+    dest: dest + 'js',
     settings: {
       bare: true
     }
