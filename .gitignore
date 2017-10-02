@@ -60,7 +60,11 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
-node_modules/
-analyzer/static/CACHE/*
+analyzer/static/*
 analyzer/tests/*
 analyzer/media/
+
+# Generators
+
+node_modules/
+bower_components/
