@@ -23,6 +23,8 @@
     "chained": "~1.0.0",
     "bootstrap-datepicker": "~1.7.1",
     "parsleyjs": "~2.8.0",
-    "miminum":"akivaron/miminium# b222673"
+    "miminum":"akivaron/miminium# b222673",
+    "bootstrap":"^v3.3.7",
+    "d3":"^v4.10.2"
   }
 }

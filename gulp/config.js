@@ -48,7 +48,8 @@ module.exports = {
   },
   fonts: {
     src: [
-      bower + 'miminum/asset/fonts/*'
+      bower + 'miminum/asset/fonts/*',
+      bower + 'bootstrap/dist/fonts/glyphicons-halflings-regular.*'
     ],
     dest: dest + 'fonts'
   },
@@ -66,6 +67,7 @@ module.exports = {
       bower + 'miminum/asset/css/plugins/ionrangeslider/*.css',
       bower + 'miminum/asset/css/plugins/*.css',
       bower + 'miminum/asset/css/*.css',
+      bower + 'bootstrap/dist/css/bootstrap.min.css',
       temp + 'css/*.css'
     ],
     dest: dest + 'css'
@@ -82,7 +84,9 @@ module.exports = {
       bower + 'parselyjs/dist/parsely.min.js',
       bower + 'parselyjs/dist/i18n/en.js',
       bower + 'miminum/asset/js/plugins/**/*.js',
-      bower + 'miminum/asset/js/*.js'
+      bower + 'miminum/asset/js/*.js',
+      bower + 'bootstrap/dist/js/bootstrap.min.js',
+      bower + 'd3/d3.min.js'
     ],
     dest: dest + 'js',
     settings: {
