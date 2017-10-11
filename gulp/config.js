@@ -55,9 +55,12 @@ module.exports = {
   },
   img: {
     src: [
-      bower + 'miminum/asset/img/*'
+      bower + 'miminum/asset/img/*',
+      bower + 'business-causal/img/bg.jpg',
+      bower + 'business-causal/img/slide-2.jpg',
+      bower + 'business-causal/img/intro-pic.jpg'
     ],
-    dest: dest + 'img'
+    dest: dest + 'img/'
   },
   css: {
     src: [
@@ -68,6 +71,8 @@ module.exports = {
       bower + 'miminum/asset/css/plugins/*.css',
       bower + 'miminum/asset/css/*.css',
       bower + 'bootstrap/dist/css/bootstrap.min.css',
+      bower + 'bootstrap/dist/css/bootstrap.min.css.map',
+      bower + 'business-causal/css/business-casual.css',
       temp + 'css/*.css'
     ],
     dest: dest + 'css'

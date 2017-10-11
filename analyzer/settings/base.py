@@ -159,3 +159,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # APP SPECFIC SETTINGS
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 ACCOUNT_ACTIVATION_DAYS = 7
+
+DEVELOPERS = [
+    {
+        'name' : 'Harsha',
+        'title' : 'Developer',
+    },
+    {
+        'name' : 'Akhil',
+        'title' : 'Developer',
+    },
+    {
+        'name' : 'Ismayil',
+        'title' : 'Developer',
+    },
+    {
+        'name' : 'Joice',
+        'title' : 'Developer',
+    },
+]
