@@ -1,6 +1,6 @@
 var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync');
-var config       = require('../config').css;
+var config       = require('../config').img;
 var gulp         = require('gulp');
 var handleErrors = require('../utils/handleErrors');
 
