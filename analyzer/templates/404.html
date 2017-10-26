@@ -1,5 +1,22 @@
-{% extends "base.html" %}
-
-{% block content %}
-  Not Found
-{% endblock %}
+{% include foundation.html %}
+{% block title%} Oh ooh.{% endblock %}
+    <!-- start: Content -->
+    {% block container %}
+    	<center>
+	      <div class="page-404 animated flipInX">
+	        <img src="asset/img/404.png" class="img-responsive"/>
+	        <a href="#"> Back To Home
+	          </br>
+	          <span class="icons icon-arrow-down"></span>
+	        </a>
+	      </div>
+	    </center>
+	{% endblock %}
+    <!-- end: content -->
+<!-- start: Javascript -->
+{% block scripts %}
+	<script src="{% static 'js/plugins/moment.min.js' %}"></script>
+	<script src="{ static'js/plugins/jquery.nicescroll.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+	{% endblock %}
+<!-- end: Javascript -->

@@ -1,47 +1,50 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %}Analyzer!{% endblock %}</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {% load compress %}
-    {% load staticfiles %}
-
-    <!-- <link rel="shortcut icon" href="/static/favicon.ico"> -->
-    <!-- <link type="text/plain" rel="author" href="/static/humans.txt" /> -->
-
-    {% compress css %}
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
-    {% endcompress %}
+{% extends 'foundation.html'  %}
+{% load staticfiles %}
+{% block title %}Analyzer!{% endblock %}
+{% block styles %}
     <link rel="stylesheet" href="{% static 'css/screen.css' %}">
-  </head>
-  <body>
-    <!-- Navigation -->
-    {% include 'partials/nav.html' %}
+{% endblock %}
+{% block container %}
+{% include 'partials/nav.html' %}
 
-    <div class="container">
-      <!-- Messages -->
-      <div class="row messages">
-        {% include 'partials/messages.html' %}
-      </div>
-
-      <!-- Page Header -->
-      <div class="row">
-        <h1 class="page-header">{% block page_title %}{% endblock %}</h1>
-      </div>
-
-      <!-- Main Content -->
-      {% block content %}{% endblock %}
+<div class="container-fluid mimin-wrapper">
+  <!-- Messages
+  <div class="row messages">
+    {% include 'partials/messages.html' %}
+  </div>
+  {% include "partials/profile_nav.html" %}   
+   <!-- start: Content -->
+    <div id="content">
+       <div class="panel box-shadow-none content-header">
+          <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">{% block page_title %}{% endblock %}</h3>
+                {% block jumpotron %}{% endblock %}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 top-20 padding-0">
+          <div class="col-md-12">
+            <div class="panel">
+              <div class="panel-heading"><h5>
+                {% block panel-heading %}{% endblock %}
+              </h5></div>
+              <div class="panel-body">
+                <div class="responsive-table ">
+                  {% block content %}{% endblock %}
+                </div>
+            </div>
+          </div>
+        </div>  
+        </div>
     </div>
+          <!-- end: content -->
 
-    {% compress js %}
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% endcompress %}
+  <!-- Main Content -->
+  
+</div>
+  {% block scripts %}
     <script src="{% static 'js/app.js' %}"></script>
-  </body>
-</html>
+  {% endblock %}
+  
+  {% endblock %}
