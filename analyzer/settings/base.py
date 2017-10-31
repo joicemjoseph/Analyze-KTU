@@ -81,6 +81,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'landings',
     'user_auth',
+    'file_processor',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -178,3 +179,24 @@ DEVELOPERS = [
         'title' : 'Developer',
     },
 ]
+
+SUIT_CONFIG = {
+    'MENU' : (
+        # Keep original label and models
+        'sites',
+        {'app': 'auth', 'label': 'Authorization', 'icon':'icon-lock'},
+    ),
+    'LIST_PER_PAGE': 20,
+    'ADMIN_NAME': 'Analyzer Admin',
+    'HEADER_DATE_FORMAT': 'l, j. F Y', # Saturday, 16th March 2013
+    'HEADER_TIME_FORMAT': 'H:i',       # 18:42
+    'SHOW_REQUIRED_ASTERISK': True,
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'MENU_OPEN_FIRST_CHILD': True,
+    'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+    },
+    'MENU_EXCLUDE': ('auth.group', 'auth'),
+
+}

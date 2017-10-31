@@ -5,7 +5,7 @@ uuid
 # Django Specific
 Django==1.11
 django-suit==0.2.23
-django-registration-redux==1.4
+django-registration-redux==1.7
 django-crispy-forms==1.6.1
 django-imagekit==3.3
 django-extensions==1.6.7
