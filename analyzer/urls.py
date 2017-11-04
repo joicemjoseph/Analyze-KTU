@@ -8,6 +8,7 @@ import debug_toolbar
 urlpatterns = [
     url(r'^', include('landings.urls')),
     url(r'^', include('user_auth.urls')),
+    url(r'^', include('file_processor.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
 

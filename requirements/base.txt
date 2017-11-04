@@ -11,6 +11,7 @@ django-imagekit==3.3
 django-extensions==1.6.7
 django-toolset==0.1.5
 django_compressor==2.1
+djangorestframework
 
 # AWS & DB
 #boto==2.45.0

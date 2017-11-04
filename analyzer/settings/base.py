@@ -76,11 +76,13 @@ THIRD_PARTY_APPS = [
     'django_toolset',
     'django_extensions',
     'compressor',
+    'rest_framework'
 ]
 
 LOCAL_APPS = [
     'landings',
     'user_auth',
+    'file_processor',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
