@@ -33,7 +33,6 @@ class Program(models.Model):
     name = models.CharField(max_length=64, blank=True)
     is_full_time = models.BooleanField() # part / full time
     year = models.CharField(max_length=7)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     # year = models.IntegerField() To deal with academic year based course change
     def __unicode__(self):
         return self.name
@@ -49,8 +48,8 @@ class Course(models.Model):
     
     def __unicode__(self):
         return self.name
-def get_user():
-    return User.objects.get(id=1)
+# def get_user():
+#     return User.objects.get(id=1)
 
 class Student(models.Model):
     User = get_user_model()

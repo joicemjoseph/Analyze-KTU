@@ -23,5 +23,5 @@ class Command(BaseCommand):
 		8 : "Eight",
 	}
 	def handle(self, *args, **options):
-		for semester in range(1,8):
+		for semester in range(1,9):
 			Semester.objects.get_or_create(number=semester, name=self.NAME[semester], minimum_credit=20)
