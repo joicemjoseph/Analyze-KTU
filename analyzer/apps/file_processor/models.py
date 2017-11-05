@@ -12,11 +12,11 @@ class Semester(models.Model):
         null=True, 
         blank=True,
         max_length=10,
-        default="One"
+        default=""
         )
     number = models.PositiveSmallIntegerField(
         null=True,
-        default=1)
+        unique=True)
     minimum_credit = models.PositiveSmallIntegerField(
         null=True,
         default=10,
@@ -31,17 +31,17 @@ def get_semester():
 
 class Program(models.Model):
     name = models.CharField(max_length=64, blank=True)
-    scheme = models.BooleanField() # part / full time
-    year = models.CharField(max_length=4)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE, default=0)
+    is_full_time = models.BooleanField() # part / full time
+    year = models.CharField(max_length=7)
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
     # year = models.IntegerField() To deal with academic year based course change
     def __unicode__(self):
         return self.name
 class Course(models.Model):
     name = models.CharField(max_length=64, blank=True)
-    code = models.CharField(max_length=64, blank=True)
-    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE, default=0)
-    weightage = models.IntegerField(blank=True, null=True)
+    code = models.CharField(max_length=64, unique=True)
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    # weightage = models.IntegerField(blank=True, null=True)
     program_id = models.ForeignKey(Program, on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(auto_now=True)
@@ -54,9 +54,9 @@ def get_user():
 
 class Student(models.Model):
     User = get_user_model()
-    name = models.CharField(blank=True, max_length=40)
+    name = models.CharField(blank=True, max_length=40) # This is for now!. When every student is a user and there are groups and permissions allotted, name field can be derived from User class
     reg_no = models.CharField(max_length=20)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=get_user)
+    # user_id = models.ForeignKey(User, on_delete=models.CASCADE, default=get_user)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -81,11 +81,11 @@ class Score(models.Model):
 class Document(models.Model):
     name = models.CharField(max_length=60, blank=True)
     docfile = models.FileField(upload_to='documents/%Y/%m/%d')
-    sha_sum = models.CharField(max_length=256, default="")
+    sha_sum = models.CharField(max_length=256, unique=True)
     # uploader = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_supplementary_results = models.BooleanField(default=False)
+    is_supplementary_result = models.BooleanField(default=False)
     def __unicode__(self):
         return self.name
     class Meta:

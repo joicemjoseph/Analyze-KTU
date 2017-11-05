@@ -14,6 +14,7 @@ from .forms import DocumentForm
 from .models import Document, Program, Course, Student, Score
 from .serializers import ProgramSerializer, CourseSerializer
 
+
 # Create your views here.
 @login_required
 def list(request):
