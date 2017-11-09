@@ -27,13 +27,14 @@ class Semester(models.Model):
     def __unicode__(self):
         return self.name
 def get_semester():
-    return Semester.objects.get(id=1) or 0
+    return Semester.objects.first() or 0
 
 class Program(models.Model):
     name = models.CharField(max_length=64, blank=True)
     is_full_time = models.BooleanField() # part / full time
     year = models.CharField(max_length=7)
-    # year = models.IntegerField() To deal with academic year based course change
+    
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE, default=-0)
     def __unicode__(self):
         return self.name
 class Course(models.Model):
@@ -61,22 +62,6 @@ class Student(models.Model):
 
     def __unicode__(self):
         return self.name
-class Score(models.Model):
-    year_string =  time.strftime("%Y, %y")
-    year_full, year = year_string.split(",")
-    CURRENT_YEAR = year_full + "-" + str(int(year) + 1 )
-    
-    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
-    year = models.CharField(max_length=4, default=CURRENT_YEAR)
-    grade = models.CharField(max_length=4, blank=True)
-    course_id = models.ForeignKey(Course, on_delete=models.CASCADE, default=0)
-    
-    created_at = models.DateTimeField(auto_now=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.grade
-
 class Document(models.Model):
     name = models.CharField(max_length=60, blank=True)
     docfile = models.FileField(upload_to='documents/%Y/%m/%d')
@@ -84,8 +69,42 @@ class Document(models.Model):
     # uploader = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
-    is_supplementary_result = models.BooleanField(default=False)
     def __unicode__(self):
         return self.name
     class Meta:
         get_latest_by = "updated_at"
+
+class Exam(models.Model):
+    year_string =  time.strftime("%Y, %y")
+    year_full, year = year_string.split(",")
+    CURRENT_YEAR = year_full + "-" + str(int(year) + 1 )
+    
+    year = models.CharField(max_length=4, default=CURRENT_YEAR) # In which year exam conducted.
+    
+    document_id = models.ForeignKey(Document, on_delete=models.CASCADE) # Which document this exam belongs to.
+    semester_id = models.ForeignKey(Semester, on_delete=models.CASCADE, default=0)
+
+    is_supplementary_result = models.BooleanField(default=False)
+    is_revaluation_result = models.BooleanField(default=False)
+
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __unicode__(self):
+        if self.is_revaluation_result or self.is_supplementary_result == False:
+            return "Revaluation/Regular"
+
+        return "Supplementary"
+
+class Score(models.Model):
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    grade = models.CharField(max_length=4, blank=True)
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE, default=0)
+    
+    exam_id = models.ForeignKey(Exam, on_delete=models.CASCADE, blank=True, null=True)
+    year = models.CharField(max_length=4, default=Exam.CURRENT_YEAR)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self):
+        return self.grade
+
