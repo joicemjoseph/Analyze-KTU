@@ -1,0 +1,29 @@
+{% extends "admin/base.html" %}
+{% load admin_static %}
+<!-- {% block stylesheet %}
+    
+{% endblock %} -->
+{% block title %}{{ title }} | Admin Panel{% endblock %}
+{% block branding %}
+	<h2 id="site-name">Analyzer Admin
+	</h2>
+{% endblock %}
+
+{% block footer_links %}
+    {% if user.is_authenticated %}
+    <a href="https://gitlab.com/gecw/Analyze-KTU/wikis/environments" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
+    {% if user.get_profile.is_admin %}
+    {% endif %}
+    <a href="https://gitlab.com/gecw/Analyze-KTU/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a Bug</a>
+    {% endif %}
+{% endblock %}
+
+{% block footer_branding %}
+PEECS - Admin
+{% endblock %}
+
+{% block copyright %}
+(c) 2013 Higher Education Department, Government of Kerala in association with IT@School VICTERS
+{% endblock %}
+{% block nav-global %}{% endblock %}
+

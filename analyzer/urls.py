@@ -1,8 +1,8 @@
 from django.conf import settings
-from django.conf.urls import include, url
+from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
-
+from django.views.static import serve
 import debug_toolbar
 
 urlpatterns = [
@@ -19,3 +19,7 @@ if settings.DEBUG:
         )
     urlpatterns += [url(r'^__debug__/', include(debug_toolbar.urls)),]
 
+    urlpatterns += [
+            url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
+            url(r'^', include('django.contrib.staticfiles.urls')),
+        ]
