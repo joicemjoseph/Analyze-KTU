@@ -1,0 +1,12 @@
+{% load compress %}
+{% load staticfiles %}
+{% compress css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.min.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/simple-line-icons.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.min.css' %}"/>
+	<link type="text/css" href="{% static 'css/style.css' %}" rel="stylesheet">
+	<!-- <link type="text/css" href="{% static 'css/fontawesome-bypass.css' %}" rel="stylesheet"> -->
+{% endcompress %}
+{% block styles %}
+{% endblock %}

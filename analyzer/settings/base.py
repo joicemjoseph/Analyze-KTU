@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     'django_toolset',
     'django_extensions',
     'compressor',
+    'rest_framework'
 ]
 
 LOCAL_APPS = [
