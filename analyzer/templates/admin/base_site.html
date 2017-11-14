@@ -1,9 +1,5 @@
 {% extends "admin/base.html" %}
-{% load admin_static %}
-<!-- {% block stylesheet %}
-    
-{% endblock %} -->
-{% block title %}{{ title }} | Admin Panel{% endblock %}
+{% block title %}{{ title }} | Analyzer{% endblock %}
 {% block branding %}
 	<h2 id="site-name">Analyzer Admin
 	</h2>
@@ -18,12 +14,23 @@
     {% endif %}
 {% endblock %}
 
+{% block sidebar %}
+	
+{% endblock %}
+{% block footer %}
 {% block footer_branding %}
-PEECS - Admin
+
 {% endblock %}
 
 {% block copyright %}
-(c) 2013 Higher Education Department, Government of Kerala in association with IT@School VICTERS
+ <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p></b>Analyzer</b> - Copyright &copy; <a href = "http://gecwyd.ac.in">Department of CSE, Gec Wayand </a></p>
+                </div>
+            </div>
+        </div>
 {% endblock %}
 {% block nav-global %}{% endblock %}
 
+{% endblock %}
